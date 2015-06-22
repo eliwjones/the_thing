@@ -1,5 +1,10 @@
 This is The Thing.
 
+0. Clone the repository:
+```
+git clone git@github.com:eliwjones/the_thing.git
+```
+
 1. Run The Server:
 ```
 go run go/the_server.go
