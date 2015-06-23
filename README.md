@@ -15,9 +15,11 @@ go run go/the_server.go
 python python/the_script.py a_key
 ```
 
-3. View The Log:
+3. Run Log View server:
 ```
-curl 127.0.0.1:9999/log
+while true; do { echo -e 'HTTP/1.1 200 OK\r\n'; cat html/the_html.html; } | nc -l 10065; done
 ```
+
+4. View The Log:  http://127.0.0.1:10065
 
 Is The Thing working?
