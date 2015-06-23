@@ -1,0 +1,25 @@
+<html>
+
+<head>
+  <script src="http://rawgit.com/flatiron/plates/master/lib/plates.js"></script>
+</head>
+
+<body>
+  <script>
+    function jsonpCallback(json) {
+      var html = '<div class="log_line"></div>';
+      var data = [];
+
+      var log_lines = json.split("\n");
+      for (i = 0; i < log_lines.length; i++) {
+        data[i] = {
+          "log_line": log_lines[i]
+        };
+      }
+      document.body.innerHTML = Plates.bind(html, data);
+    };
+  </script>
+  <script type="text/javascript" src="http://127.0.0.1:9999/log?callback=jsonpCallback"></script>
+</body>
+
+</html>

@@ -2,6 +2,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -35,6 +36,9 @@ func LogHandler(w http.ResponseWriter, r *http.Request) {
 	value, err := ioutil.ReadFile(THE_THING_DIR + "/log/the_log")
 	if err != nil {
 		fmt.Fprintf(w, fmt.Sprintf("%s", err))
+		return
 	}
-	fmt.Fprintf(w, string(value))
+	js, _ := json.Marshal(string(value))
+	callback := r.URL.Query().Get("callback")
+	fmt.Fprintf(w, callback+"("+string(js)+")")
 }
