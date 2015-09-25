@@ -25,6 +25,7 @@ func main() {
 }
 
 func ApiHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("[api_request]: %s\n", r.URL.Path)
 	key := strings.Split(r.URL.Path, "/")[2]
 	response := the_bag_of_json[key]
 	fmt.Fprintf(w, response)
